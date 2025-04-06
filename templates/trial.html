@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI for Rural Development</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #2E7D32;
+            color: white;
+            text-align: center;
+        }
+        h1 {
+            margin-top: 20px;
+        }
+        .container {
+            width: 80%;
+            margin: auto;
+        }
+        .button {
+            display: block;
+            background-color: #FFFFFF;
+            color: #1B5E20;
+            font-size: 18px;
+            font-weight: bold;
+            padding: 15px;
+            margin: 10px auto;
+            width: 60%;
+            border: none;
+            cursor: pointer;
+            border-radius: 10px;
+            transition: 0.3s;
+        }
+        .button:hover {
+            background-color: #C8E6C9;
+        }
+    </style>
+</head>
+<body>
+    <h1>🌿 AI-Driven Rural Development 🌱</h1>
+    <div class="container">
+        <button class="button" onclick="showRecommendations('agriculture')">🌾 Agriculture & Farming</button>
+        <button class="button" onclick="showRecommendations('education')">📚 Education & Digital Literacy</button>
+        <button class="button" onclick="showRecommendations('healthcare')">🏥 Healthcare & Well-being</button>
+        <button class="button" onclick="showRecommendations('climate')">🌍 Climate Resilience & Sustainability</button>
+        <button class="button" onclick="showRecommendations('employment')">💼 Employment & Women Empowerment</button>
+        <button class="button" style="background-color:#FF9800; color:white;" onclick="window.open('https://www.globalgoals.org/')">🌏 Learn More about Global Goals 🌎</button>
+    </div>
+
+    <script>
+        function showRecommendations(category) {
+            const recommendations = {
+                agriculture: [
+                    { name: "🛰 JALDOOT App", url: "https://jalshakti-dowr.gov.in/" },
+                    { name: "🤖 Google Kisan", url: "https://assistant.google.com/" },
+                    { name: "📡 Nano Ganesh", url: "https://www.nanoganesh.com/" },
+                    { name: "📊 AgriMarket", url: "https://play.google.com/store/apps/details?id=com.agri.market" }
+                ],
+                education: [
+                    { name: "📖 Google Bolo (Read Along)", url: "https://readalong.google/" },
+                    { name: "🎓 Khan Academy", url: "https://www.khanacademy.org/" }
+                ],
+                healthcare: [
+                    { name: "🚑 eSanjeevani", url: "https://esanjeevani.in/" },
+                    { name: "🩺 Arogya Setu", url: "https://www.aarogyasetu.gov.in/" }
+                ],
+                climate: [
+                    { name: "🌾 MRIDA (Soil Carbon Sequestration)", url: "https://mrida.in/" },
+                    { name: "🌱 Pusa Krishi", url: "https://www.iari.res.in/" }
+                ],
+                employment: [
+                    { name: "📌 NCS (National Career Service)", url: "https://www.ncs.gov.in/" },
+                    { name: "👩‍💻 Rozgar Setu", url:

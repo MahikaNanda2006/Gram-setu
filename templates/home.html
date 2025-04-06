@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home - RuralApp</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='home.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body>
+    <!-- Top bar with menu and search -->
+    <div class="top-bar">
+        <div class="menu-icon" onclick="toggleSidebar()">☰</div>
+        <input type="text" class="search-bar" placeholder="Search...">
+    </div>
+
+    <!-- Sidebar -->
+    <div id="sidebar" class="sidebar">
+        <button class="close-btn" onclick="toggleSidebar()">✖</button>
+        <div class="profile-img"></div>
+        <div class="user-name">User Name</div>
+
+        <div class="sidebar-option">
+            <span>Profile</span> 
+            <i class="fa-solid fa-pencil"></i>
+        </div>
+
+        <div class="sidebar-option">
+            <span>Notifications</span> 
+            <i class="fa-solid fa-bell"></i>
+        </div>
+    </div>
+
+    <!-- Main content -->
+    <div class="container">
+        <h1 class="title">Welcome to GramSetu</h1>
+
+        <div class="dashboard">
+            <div class="service">
+                <button class="button" onclick="showRecommendations('clean_drinking_water')">💧 Clean Drinking Water Accessibility</button>
+            </div>
+            <div class="service">
+                <button class="button" onclick="showRecommendations('agriculture')">🌱 Marginalized Farmers</button>
+            </div>
+            <div class="service">
+                <button class="button" onclick="showRecommendations('women_empowerment')">👩 Improving Livelihoods For Women</button>
+            </div>
+            <div class="service">
+                <button class="button" onclick="showRecommendations('healthcare')">⚕️ Healthcare & Well-being</button>
+            </div>
+            <div class="service">
+                <button class="button" onclick="showRecommendations('climate')">🌞 Combating Climate Change</button>
+            </div>
+            <div class="service">
+                <button class="button" onclick="showRecommendations('education')">📚 Girl Child Education & Digital Literacy</button>
+            </div>
+            <div class="service">
+                <button class="button" onclick="showRecommendations('employment')">💼 Employment & Women Empowerment</button>
+            </div>
+            <div class="service">
+                <button class="button" onclick="showRecommendations('climate')">🌏 Sustainable Rural Development and Management</button>
+            </div>
+            <div class="service">
+                <button class="button" onclick="showRecommendations('Government_Schemes')">🏛️ Government Schemes</button>
+            </div>
+        </div>
+
+        <button class="chatbot-button">🤖 AI Chatbot</button>
+    </div>
+
+    <!-- Scripts -->
+    <script>
+        function showRecommendations(category) {
+            localStorage.setItem("selectedCategory", category);
+            const url = "{{ url_for('recommendations_page') }}?category=" + encodeURIComponent(category);
+            window.location.href = url;
+        }
+
+        function toggleSidebar() {
+            var sidebar = document.getElementById("sidebar");
+            sidebar.classList.toggle("active");
+        }
+    </script>
+</body>
+</html>

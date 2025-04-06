@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>App Details</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='recommendations.css') }}">
+</head>
+<body>
+    <div class="title-box">
+        <h1 id="app-title">Loading...</h1>
+    </div>
+
+    <div class="container" id="appDetailsContainer">
+        <p id="app-description"></p>
+        <h3>Key Features:</h3>
+        <ul id="app-features"></ul>
+        <a id="download-link" href="#">Download App</a>
+    </div>
+    
+    
+    
+    
+    <script>
+ const apps = {
+        "employment": [
+            {
+                name: "💼 Mahila e-Haat",
+                id: "Mahila",
+                description: "Mahila e-Haat, an initiative by the Ministry of Women and Child Development, is an online platform that empowers women entrepreneurs by providing them with a marketplace to showcase and sell their products. It supports women’s economic independence by connecting them directly with buyers across India. महिला एवं बाल विकास मंत्रालय की पहल, महिला ई-हाट एक ऑनलाइन प्लेटफॉर्म है जो महिला उद्यमियों को अपने उत्पादों को प्रदर्शित करने और बेचने का अवसर देता है। यह उन्हें आर्थिक रूप से सशक्त बनाता है और पूरे भारत में खरीदारों से जोड़ता है।",
+                features: ["Online marketplace", "Empowers women", "Direct-to-buyer platform"],
+                link: "download?app=Mahila"
+            },
+            {
+                name: "💼 Udyam Sakhi",
+                id: "Udyam",
+                description: "Udyam Sakhi, an initiative by the Ministry of Micro, Small & Medium Enterprises (MSME), is a digital platform that empowers women entrepreneurs by providing business resources, mentorship, financial assistance, and market linkages. It aims to support women in starting, growing, and sustaining their businesses. सूक्ष्म, लघु और मध्यम उद्यम मंत्रालय (MSME) की पहल, उद्योग सखी एक डिजिटल प्लेटफॉर्म है जो महिला उद्यमियों को व्यवसाय से जुड़े संसाधन, मार्गदर्शन, वित्तीय सहायता और बाजार से जोड़ने की सुविधा प्रदान करता है। इसका उद्देश्य महिलाओं को आत्मनिर्भर बनाना और उनके व्यवसाय को आगे बढ़ाने में सहायता करना है।",
+                features: ["Business resources", "Mentorship", "Financial aid"],
+                link: "download?app=Udyam"
+            }
+        ],
+        "agriculture": [
+                { name: "🛰 Kisan Suvidha", 
+                id: "Kisan", 
+                description: "An initiative by the Ministry of Agriculture, this app offers farmers real-time information on weather forecasts, market prices, plant protection, and expert advisories, aiding in informed decision-making. कृषि मंत्रालय की एक पहल, यह ऐप किसानों को मौसम पूर्वानुमान, बाजार मूल्य, पौध संरक्षण और विशेषज्ञ सलाह जैसी वास्तविक समय की जानकारी प्रदान करता है, जिससे वे सही निर्णय ले सकें।",
+                features: ["Weather updates", "Market prices", "Expert advisory"],
+                link: "download?app=KisanSuvidha"
+        },
+
+                { name: "🤖 IFFCO Kisan", 
+                id: "IFFCOKisan", 
+                description: "IFFCO Kisan is a digital platform that empowers farmers with agriculture advisory, weather updates, market prices, and advanced farming techniques. It provides real-time expert guidance to enhance productivity and profitability. इफको किसान एक डिजिटल प्लेटफॉर्म है जो किसानों को कृषि परामर्श, मौसम अपडेट, बाजार मूल्य और उन्नत खेती तकनीकों की जानकारी प्रदान करता है। यह उत्पादकता और लाभ बढ़ाने के लिए वास्तविक समय में विशेषज्ञ मार्गदर्शन उपलब्ध कराता है।" ,
+                features: ["Farming tips", "Weather updates", "Market prices"], 
+                link: "download?app=IFFCOKisan"
+            },
+                { name: "📡 Plantix", 
+                id: "Plantix", 
+                description: "Plantix is an AI-powered crop diagnosis app that helps farmers identify plant diseases, nutrient deficiencies, and pest infestations using just a smartphone camera. It provides personalized treatment suggestions and connects farmers with agricultural experts. प्लांटिक्स एक एआई-संचालित फसल निदान ऐप है जो किसानों को स्मार्टफोन कैमरे का उपयोग करके पौधों के रोग, पोषक तत्वों की कमी और कीट संक्रमण की पहचान करने में मदद करता है। यह व्यक्तिगत उपचार सुझाव देता है और किसानों को कृषि विशेषज्ञों से जोड़ता है।",
+                features: ["Crop disease identification", "Treatment suggestions", "Community support"],
+                link: "download?app=Plantix"
+            },
+                { name: "📊 Digital Green", url: "appDetails.html?app=DigitalGreen", description: "Digital Green is a technology-driven initiative that empowers small-scale farmers with community-led videos, AI-driven advisory, and data-driven insights to improve agricultural productivity and sustainability. डिजिटल ग्रीन एक तकनीक आधारित पहल है, जो छोटे किसानों को समुदाय-संचालित वीडियो, एआई-आधारित परामर्श और डेटा-समर्थित जानकारी प्रदान कर उनकी कृषि उत्पादकता और स्थिरता बढ़ाने में मदद करती है।" }
+            ],
+            "clean_drinking_water": [
+                { name: "💧 Jaldhoot App", 
+                id: "Jaldhoot", 
+                description: "Jaldhoot App is a mobile application developed by the Indian government to monitor groundwater levels in rural areas. It enables officials to collect and record water level data from wells, aiding in sustainable water management and conservation efforts under the Jal Shakti Abhiyan. Jaldhoot App एक मोबाइल एप्लिकेशन है जिसे भारत सरकार द्वारा ग्रामीण क्षेत्रों में भूजल स्तर की निगरानी के लिए विकसित किया गया है। यह अधिकारियों को कुओं से जल स्तर डेटा एकत्र करने और रिकॉर्ड करने में सक्षम बनाता है, जिससे जल शक्ति अभियान के तहत सतत जल प्रबंधन और संरक्षण प्रयासों में सहायता मिलती है।", 
+                features: ["Real-time monitoring", "Government initiatives", "Water safety reports"],
+                link: "download?app=Jaldhoot"
+            },
+                { name: "🚰 Jal Jeevan Mission", 
+                id: "JalJeevanMission", 
+                description: "The Jal Jeevan Mission (JJM) App is an official government tool to track rural tap water supply under the Har Ghar Jal initiative. It provides real-time data on water connections, quality, and scheme progress, ensuring transparency and accountability. जल जीवन मिशन (JJM) ऐप एक सरकारी एप्लिकेशन है जो हर घर जल पहल के तहत ग्रामीण नल जल आपूर्ति को ट्रैक करता है। यह जल कनेक्शन, गुणवत्ता और योजना की प्रगति पर रीयल-टाइम डेटा प्रदान करता है, जिससे पारदर्शिता और जवाबदेही सुनिश्चित होती है।",
+                features: ["Real-time monitoring", "Government initiatives", "Water safety reports"],
+                link: "download?app=JalJeevanMission"
+            }
+            ],
+};
+
+
+function getURLParams() {
+            const params = new URLSearchParams(window.location.search);
+            return {
+                category: params.get("category"),
+                index: parseInt(params.get("index"))
+            };
+        }
+
+        document.addEventListener("DOMContentLoaded", () => {
+            const { category, index } = getURLParams();
+
+            if (!apps[category] || isNaN(index) || index >= apps[category].length) {
+                document.getElementById("app-title").textContent = "App not found";
+                document.getElementById("appDetailsContainer").innerHTML = "<p>App not found.</p>";
+                return;
+            }
+
+            const app = apps[category][index];
+            document.getElementById("app-title").textContent = app.name;
+            document.getElementById("app-description").textContent = app.description;
+
+            const featuresList = document.getElementById("app-features");
+            featuresList.innerHTML = ""; // Clear previous content
+
+            if (app.features && app.features.length > 0) {
+                app.features.forEach(feature => {
+                    const li = document.createElement("li");
+                    li.textContent = feature;
+                    featuresList.appendChild(li);
+                });
+            } else {
+                featuresList.innerHTML = "<li><i>No features listed for this app.</i></li>";
+            }
+
+            document.getElementById("download-link").href = app.link;
+        });
+    </script>
+</body>
+</html>

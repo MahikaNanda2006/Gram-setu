@@ -1,0 +1,44 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Sign Up</h1>
+        <div class="input-container">
+            <form action="{{ url_for('signup') }}" method="POST">
+                <input type="text" placeholder="Name" class="input" name="name">
+                
+                    <!-- other sign up fields -->
+                    <label for="language">Select Language:</label>
+                    <select name="language" required>
+                        <option value="english">English</option>
+                        <option value="hindi">हिन्दी</option>
+                    </select>
+                    <button type="submit">Sign Up</button>
+                
+                <input type="text" placeholder="Email or Mobile Number" class="input" name="email">
+                <input type="number" placeholder="Age" class="input" name="age">
+                <select class="input" name="gender">
+                    <option value="">Select Gender</option>
+                    <option value="male">Male</option>
+                    <option value="female">Female</option>
+                    <option value="other">Other</option>
+                </select>
+                <input type="text" placeholder="Topics of Interest" class="input" name="topics">
+                <input type="password" placeholder="Password" class="input" name="password">
+                <button class="button" type="submit">Sign Up</button>   
+            </form>
+            
+        </div>
+        
+        <p class="switch-text">Already have an account? Sign In</p>
+    </div>
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="en">
+

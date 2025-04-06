@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>मुख्य पृष्ठ - ग्रामसेतु</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='home.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body>
+    <!-- Top bar with menu and search -->
+    <div class="top-bar">
+        <div class="menu-icon" onclick="toggleSidebar()">☰</div>
+        <input type="text" class="search-bar" placeholder="खोजें...">
+    </div>
+
+    <!-- Sidebar -->
+    <div id="sidebar" class="sidebar">
+        <button class="close-btn" onclick="toggleSidebar()">✖</button>
+        <div class="profile-img"></div>
+        <div class="user-name">उपयोगकर्ता नाम</div>
+
+        <div class="sidebar-option">
+            <span>प्रोफ़ाइल</span> 
+            <i class="fa-solid fa-pencil"></i>
+        </div>
+
+        <div class="sidebar-option">
+            <span>सूचनाएं</span> 
+            <i class="fa-solid fa-bell"></i>
+        </div>
+    </div>
+
+    <!-- Main content -->
+    <div class="container">
+        <h1 class="title">ग्रामसेतु में आपका स्वागत है</h1>
+
+        <div class="dashboard">
+            <div class="service">
+                <button class="button" onclick="showRecommendations('clean_drinking_water')">💧 स्वच्छ पेयजल उपलब्धता</button>
+            </div>
+            <div class="service">
+                <button class="button" onclick="showRecommendations('agriculture')">🌱 सीमांत किसान</button>
+            </div>
+            <div class="service">
+                <button class="button" onclick="showRecommendations('women_empowerment')">👩 महिलाओं के जीवन स्तर में सुधार</button>
+            </div>
+            <div class="service">
+                <button class="button" onclick="showRecommendations('healthcare')">⚕️ स्वास्थ्य और कल्याण</button>
+            </div>
+            <div class="service">
+                <button class="button" onclick="showRecommendations('climate')">🌞 जलवायु परिवर्तन से मुकाबला</button>
+            </div>
+            <div class="service">
+                <button class="button" onclick="showRecommendations('education')">📚 बालिका शिक्षा और डिजिटल साक्षरता</button>
+            </div>
+            <div class="service">
+                <button class="button" onclick="showRecommendations('employment')">💼 रोजगार और महिला सशक्तिकरण</button>
+            </div>
+            <div class="service">
+                <button class="button" onclick="showRecommendations('climate')">🌏 सतत ग्रामीण विकास और प्रबंधन</button>
+            </div>
+            <div class="service">
+                <button class="button" onclick="showRecommendations('Government_Schemes')">🏛️ सरकारी योजनाएं</button>
+            </div>
+        </div>
+
+        <button class="chatbot-button">🤖 एआई चैटबॉट</button>
+    </div>
+
+    <!-- Scripts -->
+    <script>
+        function showRecommendations(category) {
+            localStorage.setItem("selectedCategory", category);
+            const url = "{{ url_for('recommendations_page') }}?category=" + encodeURIComponent(category);
+            window.location.href = url;
+        }
+
+        function toggleSidebar() {
+            var sidebar = document.getElementById("sidebar");
+            sidebar.classList.toggle("active");
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Download App</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='Download.css') }}">
+
+</head>
+<body>
+    <div class="container">
+        <div class="app-banner" id="appTitle"></div>
+        <div class="content">
+            <p id="appDescription"></p>
+            <h3>Steps to Download:</h3>
+            <ol>
+                <li>Open the Google Play Store or Apple App Store on your smartphone.</li>
+                <li>Search for "<span id="appSearch"></span>" in the search bar.</li>
+                <li>Click on the app from the search results.</li>
+                <li>Tap the "Install" or "Download" button.</li>
+                <li>Once installed, open the app and follow the setup instructions.</li>
+            </ol>
+            <h3>Download Link:</h3>
+            <p id="appDownload"></p>
+            <h3>Getting Started:</h3>
+            <p id="appGettingStarted"></p>
+        </div>
+    </div>
+    <script>
+        const urlParams = new URLSearchParams(window.location.search);
+        const app = urlParams.get('app');
+
+        const apps = {
+            "mWater": {
+                title: "mWater",
+                description: "mWater is a water quality monitoring app that helps users track and improve drinking water sources worldwide.",
+                link: "https://play.google.com/store/apps/details?id=com.mwater.mwaterfield",
+                gettingStarted: "1. Open the app.\n2. Tap 'Create Account'.\n3. Fill in your name, email, and password.\n4. Confirm email via the link sent.\n5. Log in to start mapping water sources."
+            },
+            "JalJeevanMission": {
+                title: "Jal Jeevan Mission",
+                description: "An initiative by the Ministry of Agriculture, this app provides real-time information on weather, market prices, and expert advisories for farmers.",
+                link: "https://play.google.com/store/apps/details?id=com.nic.jjm",
+                gettingStarted: "1. Open the app.\n2. Tap 'Register'.\n3. Enter your mobile number and verify with OTP.\n4. Set a password.\n5. Use dashboard to view water data."
+            },
+            "KisanSuvidha": {
+                title: "Kisan Suvidha",
+                description: "A government initiative offering real-time agricultural data including weather updates and crop protection information.",
+                link: "https://play.google.com/store/apps/details?id=com.cdac.kisansuvidha",
+                gettingStarted: "1. Download and open the app.\n2. Choose your language.\n3. Select your state and district.\n4. View relevant agricultural data directly."
+            },
+            "Jaldhoot": {
+                title: "Jaldhoot",
+                description: "A mobile app by the Indian government to monitor and record groundwater levels in villages.",
+                link: "https://play.google.com/store/apps/details?id=com.jaldoot.citizen&hl=en_IN",
+                gettingStarted: "1. Open the app.\n2. Enter official credentials or register (if allowed).\n3. Choose village and begin groundwater data entry."
+            },
+            "IFFCOKisan": {
+                title: "IFFCO Kisan",
+                description: "A farmer-focused app offering agricultural advisories, weather updates, and market prices.",
+                link: "https://play.google.com/store/apps/details?id=com.iffcokisan",
+                gettingStarted: "1. Open the app.\n2. Tap on 'Register'.\n3. Enter name, mobile number, and language preference.\n4. You’ll get updates tailored to your region."
+            },
+            "Plantix": {
+                title: "Plantix",
+                description: "A plant disease diagnosis app that helps farmers identify and treat crop diseases.",
+                link: "https://play.google.com/store/apps/details?id=com.peat.GartenBank",
+                gettingStarted: "1. Open the app.\n2. Choose a language.\n3. Sign up with phone or email.\n4. Use camera to click plant pictures and get diagnosis."
+            }
+        };
+
+        if (app && apps[app]) {
+            document.getElementById("appTitle").innerText = apps[app].title;
+            document.getElementById("appDescription").innerText = apps[app].description;
+            document.getElementById("appSearch").innerText = apps[app].title;
+            document.getElementById("appDownload").innerHTML = `<a href="${apps[app].link}" target="_blank" class="download-btn">Download ${apps[app].title}</a>`;
+            document.getElementById("appGettingStarted").innerText = apps[app].gettingStarted;
+        } else {
+            document.querySelector(".container").innerHTML = "<h1>App not found</h1><p>Please select a valid app.</p>";
+        }
+    </script>
+</body>
+</html>

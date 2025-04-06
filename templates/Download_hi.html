@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Download App</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='Download.css') }}">
+
+</head>
+<body>
+    <div class="container">
+        <div class="app-banner" id="appTitle"></div>
+        <div class="content">
+            <p id="appDescription"></p>
+            <h3>डाउनलोड करने के चरण:</h3>
+            <ol>
+                <li>अपने स्मार्टफोन पर Google Play Store या Apple App Store खोलें।</li>
+                <li>सर्च बार में "<span id="appSearch"></span>" खोजें।</li>
+                <li>सर्च रिजल्ट्स में से ऐप पर क्लिक करें।</li>
+                <li>"इंस्टॉल" या "डाउनलोड" बटन पर टैप करें।</li>
+                <li>इंस्टॉल हो जाने के बाद, ऐप खोलें और सेटअप निर्देशों का पालन करें।</li>
+            </ol>
+            <h3>डाउनलोड लिंक:</h3>
+            <p id="appDownload"></p>
+            <h3>शुरुआत कैसे करें:</h3>
+            <p id="appGettingStarted"></p>
+            
+            </ol>
+            <h3>Download Link:</h3>
+            <p id="appDownload"></p>
+            <h3>Getting Started:</h3>
+            <p id="appGettingStarted"></p>
+        </div>
+    </div>
+    <script>
+        const urlParams = new URLSearchParams(window.location.search);
+        const app = urlParams.get('app');
+
+        const apps = {
+            "mWater": {
+                title: "mWater",
+                description: "mWater एक जल गुणवत्ता निगरानी ऐप है जो उपयोगकर्ताओं को दुनिया भर में पेयजल स्रोतों को ट्रैक करने और सुधारने में मदद करता है।",
+                link: "https://play.google.com/store/search?q=mWater&c=apps&hl=en_IN",
+                gettingStarted: "1. ऐप खोलें।\n2. 'खाता बनाएँ' पर टैप करें।\n3. अपना नाम, ईमेल और पासवर्ड भरें।\n4. भेजे गए लिंक के ज़रिए ईमेल की पुष्टि करें।\n5. जल स्रोतों का मानचित्रण शुरू करने के लिए लॉग इन करें।"
+            },
+            "JalJeevanMission": {
+                title: "Jal Jeevan Mission",
+                description: "कृषि मंत्रालय की पहल पर शुरू किया गया यह ऐप किसानों के लिए मौसम, बाजार मूल्यों और विशेषज्ञ सलाह पर वास्तविक समय की जानकारी प्रदान करता है।",
+                link: "https://play.google.com/store/apps/details?id=com.settribeitsolutions.jaljivanmissionweb&hl=en_IN",
+                gettingStarted: "1. ऐप खोलें.\n2. 'रजिस्टर' पर टैप करें.\n3. अपना मोबाइल नंबर दर्ज करें और OTP से सत्यापित करें.\n4. पासवर्ड सेट करें.\n5. पानी का डेटा देखने के लिए डैशबोर्ड का उपयोग करें."
+            },
+            "KisanSuvidha": {
+                title: "Kisan Suvidha",
+                description: "एक सरकारी पहल जो मौसम संबंधी अद्यतन और फसल सुरक्षा संबंधी जानकारी सहित वास्तविक समय पर कृषि संबंधी आंकड़े उपलब्ध कराती है।",
+                link: "https://play.google.com/store/apps/details?id=com.informaticapp.risl&hl=en_IN",
+                gettingStarted: "1. ऐप डाउनलोड करें और खोलें।\n2. अपनी भाषा चुनें।\n3. अपना राज्य और जिला चुनें।\n4. प्रासंगिक कृषि डेटा सीधे देखें।"
+            },
+            "Jaldhoot": {
+                title: "Jaldhoot",
+                description: "गांवों में भूजल स्तर की निगरानी और रिकॉर्ड करने के लिए भारत सरकार द्वारा एक मोबाइल ऐप।",
+                link: "https://play.google.com/store/apps/details?id=com.jaldoot.citizen&hl=en_IN",
+                gettingStarted: "1. ऐप खोलें.\n2. आधिकारिक क्रेडेंशियल दर्ज करें या रजिस्टर करें (यदि अनुमति हो).\n3. गांव चुनें और भूजल डेटा प्रविष्टि शुरू करें।"
+            },
+            "IFFCOKisan": {
+                title: "IFFCO Kisan",
+                description: "यह किसान-केंद्रित ऐप है जो कृषि संबंधी सलाह, मौसम संबंधी अपडेट और बाजार मूल्य प्रदान करता है।",
+                link: "https://play.google.com/store/apps/details?id=com.iffco_farmer_app&hl=en_IN",
+                gettingStarted: "1. ऐप खोलें.\n2. 'रजिस्टर' पर टैप करें.\n3. नाम, मोबाइल नंबर और भाषा वरीयता दर्ज करें.\n4. आपको अपने क्षेत्र के अनुसार अपडेट मिलेंगे."
+            },
+            "Plantix": {
+                title: "Plantix",
+                description: "एक पौध रोग निदान ऐप जो किसानों को फसल रोगों की पहचान और उपचार में मदद करता है।",
+                link: "https://play.google.com/store/search?q=Plantix&c=apps&hl=en_IN",
+                gettingStarted: "1. ऐप खोलें। 2. भाषा चुनें। 3. फ़ोन या ईमेल से साइन अप करें। 4. पौधे की तस्वीरें क्लिक करने और निदान प्राप्त करने के लिए कैमरे का उपयोग करें।"
+            }
+        };
+
+        if (app && apps[app]) {
+            document.getElementById("appTitle").innerText = apps[app].title;
+            document.getElementById("appDescription").innerText = apps[app].description;
+            document.getElementById("appSearch").innerText = apps[app].title;
+            document.getElementById("appDownload").innerHTML = `<a href="${apps[app].link}" target="_blank" class="download-btn">Download ${apps[app].title}</a>`;
+            document.getElementById("appGettingStarted").innerText = apps[app].gettingStarted;
+        } else {
+            document.querySelector(".container").innerHTML = "<h1>ऐप नहीं मिला</h1><p>कृपया एक वैध ऐप चुनें.</p>";
+        }
+    </script>
+</body>
+</html>

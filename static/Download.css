@@ -1,0 +1,65 @@
+/* General Page Styling */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f5f5f5;
+}
+
+/* Main Container */
+.container {
+    max-width: 600px;
+    margin: 30px auto;
+    padding: 20px;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+/* App Banner */
+.app-banner {
+    background-color: #FFC107; /* Turmeric Yellow */
+    color: black;
+    font-size: 24px;
+    font-weight: bold;
+    padding: 15px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+/* Section Headings */
+h3 {
+    color: #D84315; /* Deep Saffron */
+    font-weight: bold;
+    text-align: left;
+    margin-top: 20px;
+}
+
+/* Download Button */
+.download-btn {
+    display: inline-block;
+    margin: 15px 0;
+    padding: 12px 20px;
+    background-color: #28A745; /* Green */
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background 0.3s ease-in-out;
+}
+
+.download-btn:hover {
+    background-color: #218838;
+}
+
+/* List Styling */
+ol {
+    text-align: left;
+    padding-left: 20px;
+}
+
+ol li {
+    margin: 8px 0;
+}
